@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiewa Blog - The Journal (Masonry Grid)</title>
+    <!-- Google Fonts: Montserrat for headings, Lato for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Color Palette --- */
+        :root {
+            --color-primary-accent: #00BFFF; /* Deep Sky Blue */
+            --color-secondary-highlight: #FFD700; /* Gold */
+            --color-background-dark: #1A1A1A; /* Deep dark gray */
+            --color-background-light: #2C2C2C; /* Slightly lighter dark for sections */
+            --color-text-light: #E0E0E0; /* Light gray text */
+            --color-text-muted: #A0A0A0; /* Muted gray text */
+            --color-border-dark: #3A3A3A; /* Dark border */
+            --color-footer-darkest: #0D0D0D; /* Almost black for footer */
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-light);
+            background-color: var(--color-background-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary-accent);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-secondary-highlight);
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x600/1A1A1A/00BFFF?text=Vanjangai+Dynamic+Sunrise');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 50%, rgba(0,0,0,0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 0 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Category Filter --- */
+        .category-filter {
+            background-color: var(--color-background-light);
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--color-border-dark);
+            text-align: center;
+        }
+
+        .category-filter ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .category-filter li a {
+            display: block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            background-color: var(--color-background-dark);
+            color: var(--color-text-light);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-border-dark);
+        }
+
+        .category-filter li a:hover {
+            background: linear-gradient(45deg, var(--color-primary-accent), var(--color-secondary-highlight));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+        }
+
+        /* --- Masonry Blog Grid --- */
+        .blog-grid-section {
+            background-color: var(--color-background-light);
+            padding: 6rem 0;
+        }
+
+        .masonry-grid {
+            column-count: 1; /* Default to 1 column on mobile */
+            column-gap: 2rem; /* Gap between columns */
+        }
+
+        .blog-card {
+            background-color: var(--color-background-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            display: inline-block; /* Essential for masonry layout */
+            width: 100%; /* Take full width of column */
+            margin-bottom: 2rem; /* Gap below each card */
+            border: 1px solid var(--color-border-dark);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: auto; /* Auto height for masonry */
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            display: block; /* Remove extra space below image */
+        }
+
+        .blog-card-content {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+            color: var(--color-primary-accent);
+        }
+
+        .blog-card-content .excerpt {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Allow up to 3 lines for masonry */
+            -webkit-box-orient: vertical;
+        }
+
+        .blog-card-content .date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.25rem;
+        }
+
+        .blog-card-content .read-more {
+            display: inline-block;
+            margin-top: auto;
+            color: var(--color-secondary-highlight);
+            font-weight: 700;
+            border-bottom: 2px solid var(--color-secondary-highlight);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card-content .read-more:hover {
+            color: var(--color-primary-accent);
+            border-color: var(--color-primary-accent);
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        /* --- Call to Action Footer --- */
+        .cta-footer {
+            background-color: var(--color-footer-darkest);
+            color: white;
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .cta-footer h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary-accent);
+        }
+
+        .cta-footer p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            background: linear-gradient(45deg, var(--color-primary-accent), var(--color-secondary-highlight));
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: none;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+            .hero-content h1 { font-size: 5rem; }
+            .hero-content p { font-size: 1.6rem; }
+            .section-padding { padding: 8rem 0; }
+            .masonry-grid { column-count: 2; } /* 2 columns on tablet */
+            .blog-card-image { height: auto; } /* Let images determine height */
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content h1 { font-size: 6rem; }
+            .hero-content p { font-size: 1.8rem; }
+            .section-padding { padding: 10rem 0; }
+            .masonry-grid { column-count: 3; } /* 3 columns on desktop */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>The Hiewa Journal</h1>
+            <p>Stories, trails, and everything in between.</p>
+        </div>
+    </header>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container">
+            <ul>
+                <li><a href="#">All Posts</a></li>
+                <li><a href="#">Trails & Treks</a></li>
+                <li><a href="#">Local Culture</a></li>
+                <li><a href="#">Food & Flavors</a></li>
+                <li><a href="#">Guest Stories</a></li>
+                <li><a href="#">Travel Tips</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Blog Post Grid (Masonry) -->
+    <section class="blog-grid-section">
+        <div class="container">
+            <div class="masonry-grid">
+                <!-- Blog Post 1 (Tall) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x500/00BFFF/E0E0E0?text=Vanjangai+Misty+View" alt="Expansive misty view from Vanjangi viewpoint" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>Waking Up Above The Clouds at Vanjangi: A Photo Essay</h3>
+                        <p class="excerpt">Experience the ethereal beauty of Vanjangi's famous cloud shore as dawn breaks over the Eastern Ghats. This visual journey captures the magic of a sunrise above the mist, a spectacle unique to this hidden gem.</p>
+                        <span class="date">July 10, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 (Medium) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x400/FFD700/1A1A1A?text=Katiki+Falls+Guide" alt="Hikers at the base of Katiki Falls" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>How Not To Slip at Katiki Falls: A Quick Guide</h3>
+                        <p class="excerpt">Navigating the slippery slopes to Katiki Falls requires a few tricks. Here's our essential safety guide to ensure a fun and slip-free adventure.</p>
+                        <span class="date">July 05, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 (Short) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x300/00BFFF/E0E0E0?text=Lambasingi+Chai+Spot" alt="Cozy chai stall in Lambasingi" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>Our Favorite Chai Spots Near Lambasingi</h3>
+                        <p class="excerpt">Discover the coziest corners for a perfect cup of steaming chai in the "Kashmir of Andhra Pradesh."</p>
+                        <span class="date">June 28, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 4 (Medium) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x450/FFD700/1A1A1A?text=Araku+Bamboo+Chicken" alt="Delicious bamboo chicken dish" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>A Taste of Araku: Must-Try Local Delicacies</h3>
+                        <p class="excerpt">From succulent bamboo chicken to traditional tribal meals, savor the unique, authentic flavors of Araku Valley's cuisine.</p>
+                        <span class="date">June 20, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 5 (Tall) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x550/00BFFF/E0E0E0?text=Guest+Campfire+Story" alt="Guests laughing around a warm campfire under stars" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>From City Buzz to Forest Calm: A Guest's Inspiring Story</h3>
+                        <p class="excerpt">Read about how one of our guests found profound peace and thrilling adventure on their recent Hiewa trip, transforming their perspective on travel and nature.</p>
+                        <span class="date">June 15, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 6 (Short) -->
+                <div class="blog-card">
+                    <img src="https://placehold.co/600x350/FFD700/1A1A1A?text=Forest+Bathing+Vanjangai" alt="Person meditating in a serene forest" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <h3>The Healing Power of Forest Bathing in Vanjangi</h3>
+                        <p class="excerpt">Discover the ancient Japanese practice of Shinrin-yoku amidst the serene, untouched woods of Vanjangi.</p>
+                        <span class="date">June 08, 2025</span>
+                        <a href="#" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Footer -->
+    <footer class="cta-footer">
+        <div class="container">
+            <h3>Want to write for us?</h3>
+            <p>Share your travel stories, tips, and experiences from the Eastern Ghats with our growing community of adventure seekers.</p>
+            <a href="#" class="cta-button">Join the Tribe</a>
+        </div>
+    </footer>
+
+</body>
+</html>

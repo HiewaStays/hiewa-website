@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiewa Trails - Horizontal Scroll Layout</title>
+    <!-- Google Fonts: Poppins for clean, modern feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Color Palette --- */
+        :root {
+            --color-primary-blue: #3B82F6; /* Clean blue accent */
+            --color-secondary-dark: #1A1A1A; /* Dark text/accents */
+            --color-background-light: #FFFFFF; /* Pure white */
+            --color-background-section: #F8F8F8; /* Light gray for sections */
+            --color-text-dark: #333333; /* Standard text */
+            --color-text-muted: #6A6A6A; /* Muted text */
+            --color-border-light: #E0E0E0; /* Light border */
+            --color-footer-dark: #222222; /* Dark gray footer */
+            --color-effort-easy: #4CAF50; /* Green */
+            --color-effort-moderate: #FFC107; /* Amber */
+            --color-effort-intense: #DC3545; /* Red */
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-background-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-secondary-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary-blue);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-secondary-dark);
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x600/3B82F6/FFFFFF?text=Vanjangai+Horizontal+Hero');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Intro Section --- */
+        .intro-section {
+            padding: 4rem 1.5rem;
+            background-color: var(--color-background-light);
+            text-align: center;
+        }
+
+        .intro-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+        }
+
+        /* --- Horizontal Scroll Section --- */
+        .horizontal-scroll-section {
+            padding: 5rem 0;
+            background-color: var(--color-background-section);
+        }
+
+        .horizontal-scroll-wrapper {
+            display: flex;
+            overflow-x: scroll; /* Enable horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Snap to cards */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            padding-bottom: 1.5rem; /* Space for scrollbar */
+            gap: 1.5rem; /* Gap between cards */
+        }
+
+        /* Hide scrollbar for a cleaner look */
+        .horizontal-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .horizontal-scroll-wrapper {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .scroll-card {
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            width: 90%; /* Full width on mobile */
+            max-width: 350px; /* Max width for desktop cards */
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            scroll-snap-align: start; /* Snap to start of card */
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border-light);
+        }
+
+        .scroll-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .scroll-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .scroll-card-content {
+            padding: 1.5rem;
+        }
+
+        .scroll-card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            color: var(--color-primary-blue);
+        }
+
+        .scroll-card-content .description {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .scroll-card-content .effort-level {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .effort-level.easy { color: var(--color-effort-easy); }
+        .effort-level.moderate { color: var(--color-effort-moderate); }
+        .effort-level.intense { color: var(--color-effort-intense); }
+
+        .read-more-button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border-radius: 20px;
+            background-color: var(--color-primary-blue);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation arrows for horizontal scroll (desktop only) */
+        .scroll-nav-arrows {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 1rem;
+            justify-content: space-between;
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+        .scroll-nav-arrows button {
+            background-color: rgba(255,255,255,0.8);
+            border: 1px solid var(--color-border-light);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-primary-blue);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            pointer-events: all; /* Re-enable pointer events for buttons */
+        }
+        .scroll-nav-arrows button:hover {
+            background-color: white;
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* --- Optional Add-ons Section --- */
+        .add-ons-section {
+            padding: 5rem 1.5rem;
+            background-color: var(--color-background-light);
+        }
+        .add-ons-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .map-sketch {
+            background-image: url('https://placehold.co/800x500/E0E0E0/3B82F6?text=Minimal+Trail+Map');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--color-border-light);
+        }
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .map-sketch:hover .map-overlay {
+            opacity: 1;
+        }
+        .ask-host-box {
+            background-color: var(--color-background-section);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid var(--color-border-light);
+        }
+        .ask-host-box h3 {
+            font-size: 1.4rem;
+            color: var(--color-primary-blue);
+            margin-bottom: 1rem;
+        }
+        .ask-host-box p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .contact-host-button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border-radius: 20px;
+            background-color: var(--color-primary-blue);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .contact-host-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-footer-dark);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .footer-text {
+            font-size: 0.9rem;
+            color: #B0B0B0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+            .hero-content h1 { font-size: 4.5rem; }
+            .hero-content p { font-size: 1.4rem; }
+            .intro-section { padding: 5rem 2rem; }
+            .horizontal-scroll-wrapper {
+                padding: 0 2rem 1.5rem; /* Add horizontal padding for desktop */
+                justify-content: flex-start; /* Align cards to start */
+            }
+            .scroll-card {
+                width: calc(50% - 0.75rem); /* Two cards per row with gap */
+            }
+            .scroll-nav-arrows {
+                display: flex; /* Show arrows on desktop */
+            }
+            .add-ons-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content h1 { font-size: 5rem; }
+            .hero-content p { font-size: 1.5rem; }
+            .intro-section { padding: 6rem 2rem; }
+            .scroll-card {
+                width: calc(33.333% - 1rem); /* Three cards per row with gap */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Trails Around Hiewa</h1>
+            <p>Sunrise treks. Forest walks. Waterfall dips. It’s all here.</p>
+        </div>
+    </header>
+
+    <!-- Intro Paragraph Section -->
+    <section class="intro-section">
+        <div class="container">
+            <p>At Hiewa, our trails are more than just paths; they are invitations to reconnect with nature and yourself. Each day brings a new adventure, from invigorating sunrise treks that unveil breathtaking panoramic views, to serene forest walks where you can truly immerse yourself in the natural symphony. Evenings are for sharing stories around crackling campfires, reflecting on the day's discoveries. Our curated experiences are designed to blend daily exploration with moments of tranquility, ensuring every step of your journey is memorable.</p>
+        </div>
+    </section>
+
+    <!-- Horizontal Scroll Section -->
+    <section class="horizontal-scroll-section relative">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Our Curated Trails</h2>
+            <div class="horizontal-scroll-wrapper" id="horizontal-scroll-container">
+                <!-- Vanjangi Sunrise Trek -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Vanjangai+Sunrise+Trek" alt="Misty sunrise over Vanjangi hills" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>Vanjangi Sunrise Trek</h3>
+                        <p class="description">Witness the magical "Cloud Shore" as the sun rises over a sea of mist. An unforgettable start to your day.</p>
+                        <div class="effort-level easy">Effort: Easy to Moderate</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Tarabu Waterfall Trail -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/4CAF50/FFFFFF?text=Tarabu+Waterfall" alt="Pristine Tarabu Waterfall in lush forest" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>Tarabu Waterfall Trail</h3>
+                        <p class="description">A refreshing journey through lush forests leading to the pristine cascades of Tarabu Waterfall.</p>
+                        <div class="effort-level moderate">Effort: Moderate</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- A Secret Waterfall Camping (Hiewa Exclusive) -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/DC3545/FFFFFF?text=Secret+Waterfall+Camping" alt="Secluded waterfall with camping tents" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>A Secret Waterfall Camping (Hiewa Exclusive)</h3>
+                        <p class="description">An exclusive overnight adventure to a secluded waterfall, complete with starlit camping and campfire stories.</p>
+                        <div class="effort-level intense">Effort: Intense</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Araku Vanjangi Trail -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/FFC107/FFFFFF?text=Araku+Vanjangai+Trail" alt="Scenic mountain path between Araku and Vanjangi" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>Araku Vanjangi Trail</h3>
+                        <p class="description">Explore the scenic route connecting the famous Araku Valley to the serene Vanjangi Hills, discovering diverse landscapes.</p>
+                        <div class="effort-level moderate">Effort: Moderate to Intense</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Vizag Araku Vanjangi Trail -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Vizag+Araku+Vanjangai" alt="Coastal view transitioning to hills on the trail" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>Vizag Araku Vanjangi Trail</h3>
+                        <p class="description">A multi-day journey from the coastal city of Vizag, through coffee plantations, to the misty peaks of Vanjangi.</p>
+                        <div class="effort-level moderate">Effort: Moderate</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Vizag Araku Vanjangi Lambasingi Trail -->
+                <div class="scroll-card">
+                    <img src="https://placehold.co/600x400/DC3545/FFFFFF?text=Eastern+Ghats+Expedition" alt="Panoramic view of Eastern Ghats landscape" class="scroll-card-image">
+                    <div class="scroll-card-content">
+                        <h3>Vizag Araku Vanjangi Lambasingi Trail</h3>
+                        <p class="description">The ultimate Eastern Ghats expedition, covering diverse ecosystems from Vizag to the "Kashmir of Andhra Pradesh."</p>
+                        <div class="effort-level intense">Effort: Intense</div>
+                        <a href="#" class="read-more-button">View Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Arrows (Desktop Only) -->
+            <div class="scroll-nav-arrows">
+                <button id="prev-scroll"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-scroll"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional Add-ons Section -->
+    <section class="add-ons-section">
+        <div class="container">
+            <div class="add-ons-grid">
+                <!-- Map Sketch -->
+                <div class="map-sketch">
+                    <div class="map-overlay">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                </div>
+
+                <!-- Ask Your Host Box -->
+                <div class="ask-host-box">
+                    <h3>Ask Your Host!</h3>
+                    <p>Have questions about sunrise timings, essential gear, or finding the best local guides for your trail adventure? Our experienced hosts are here to help you plan every detail.</p>
+                    <a href="#" class="contact-host-button">Contact Your Host</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">&copy; 2025 Hiewa Stays & Trails. All rights reserved. | Designed for Adventure Seekers</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollContainer = document.getElementById('horizontal-scroll-container');
+            const prevButton = document.getElementById('prev-scroll');
+            const nextButton = document.getElementById('next-scroll');
+
+            if (scrollContainer && prevButton && nextButton) {
+                const scrollAmount = 380; // Approximate width of a card + gap
+
+                nextButton.addEventListener('click', () => {
+                    scrollContainer.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+
+                prevButton.addEventListener('click', () => {
+                    scrollContainer.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiewa Stays & Trails - Vanjangi Hills Adventure (Split Tabs)</title>
+    <!-- Google Fonts: Poppins for modern feel, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Color Palette --- */
+        :root {
+            --color-primary-blue: #3B82F6; /* Clean blue accent */
+            --color-secondary-dark: #1A1A1A; /* Dark text/accents */
+            --color-background-light: #FFFFFF; /* Pure white */
+            --color-background-section: #F8F8F8; /* Light gray for sections */
+            --color-text-dark: #333333; /* Standard text */
+            --color-text-muted: #6A6A6A; /* Muted text */
+            --color-border-light: #E0E0E0; /* Light border */
+            --color-footer-dark: #222222; /* Dark gray footer */
+            --color-accent-orange: #FF8C00; /* Orange for trails */
+            --color-accent-yellow: #FFD700; /* Gold for reviews */
+            --color-review-bg-light: #FFFACD; /* Lemon Chiffon for review cards background */
+            --color-effort-easy: #4CAF50; /* Green */
+            --color-effort-moderate: #FFC107; /* Amber */
+            --color-effort-intense: #DC3545; /* Red */
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-background-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-secondary-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary-blue);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-secondary-dark);
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Header (Minimal) --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.75rem 0;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none; /* Hidden on mobile by default */
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item a {
+            color: var(--color-text-dark);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item a:hover {
+            color: var(--color-primary-blue);
+        }
+
+        .book-now-btn {
+            background: var(--color-primary-blue);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .book-now-btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        /* --- Split-Screen Hero Section --- */
+        .hero {
+            display: flex;
+            flex-direction: column; /* Stack on mobile */
+            min-height: 80vh; /* Takes up significant viewport height */
+            position: relative;
+        }
+
+        .hero-left, .hero-right {
+            flex: 1; /* Equal width on desktop */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-left {
+            background-color: var(--color-background-section);
+            color: var(--color-text-dark);
+        }
+
+        .hero-right {
+            background-image: url('https://placehold.co/1200x800/3B82F6/FFFFFF?text=Vanjangai+Split+Hero');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3); /* Dark overlay for text */
+        }
+
+        .hero-content {
+            max-width: 500px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-left h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary-blue);
+        }
+
+        .hero-left p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+        }
+
+        .hero-right h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-right p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 0.9rem 1.8rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-hero-primary {
+            background: var(--color-primary-blue);
+            color: white;
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: var(--color-primary-blue);
+            border: 2px solid var(--color-primary-blue);
+        }
+
+        .btn-hero-primary:hover { background: #2563eb; transform: translateY(-2px); }
+        .btn-hero-secondary:hover { background: var(--color-primary-blue); color: white; transform: translateY(-2px); }
+
+
+        /* --- Tabbed Sections --- */
+        .tabbed-sections {
+            background-color: var(--color-background-light);
+            padding: 5rem 0;
+        }
+
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--color-border-light);
+            gap: 1rem;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: color 0.2s ease, border-bottom 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: var(--color-primary-blue);
+            border-bottom: 2px solid var(--color-primary-blue);
+        }
+
+        .tab-content {
+            display: none; /* Hidden by default */
+            padding-top: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* --- Rooms/Trails Grid (within tabs) --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stacked on mobile */
+            gap: 2rem;
+        }
+
+        .card-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--color-primary-blue), #6A6A6A); /* Placeholder gradient */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--color-primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-features, .card-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-tag, .highlight-tag {
+            background: var(--color-background-section);
+            color: var(--color-primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .card-price, .card-duration {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--color-accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .card-action-btn {
+            width: 100%;
+            background: var(--color-primary-blue);
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .card-action-btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        /* --- Facilities Section --- */
+        .facilities-section {
+            background: var(--color-background-section);
+            padding: 5rem 0;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .facility-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .facility-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .facility-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--color-primary-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        /* --- Reviews Section --- */
+        .reviews-section {
+            padding: 5rem 0;
+            background-color: var(--color-background-light);
+        }
+
+        .reviews-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .reviews-summary {
+            text-align: center;
+        }
+
+        .reviews-summary h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .star-rating {
+            color: var(--color-accent-yellow);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .rating-item {
+            text-align: center;
+        }
+
+        .rating-score {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-review-bg-light);
+            border: 2px solid var(--color-accent-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--color-text-dark);
+            margin: 0 auto 0.5rem;
+        }
+
+        .testimonial-cards-wrapper {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1rem;
+        }
+        .testimonial-cards-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+        .testimonial-cards-wrapper::-webkit-scrollbar-thumb {
+            background: var(--color-primary-blue);
+            border-radius: 10px;
+        }
+        .testimonial-cards-wrapper::-webkit-scrollbar-track {
+            background: var(--color-border-light);
+            border-radius: 10px;
+        }
+
+        .testimonial-card {
+            flex-shrink: 0;
+            width: 90%;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            padding: 1.2rem;
+            scroll-snap-align: start;
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--color-accent-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-text-dark);
+            margin-right: 0.8rem;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: var(--color-text-dark);
+        }
+
+        .reviewer-meta {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--color-text-dark);
+            line-height: 1.4;
+        }
+
+        .review-nav-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .review-nav-arrows button {
+            background-color: var(--color-primary-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .review-nav-arrows button:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        /* --- Location Section --- */
+        .location-section {
+            background: var(--color-background-section);
+            padding: 5rem 0;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .location-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .location-text p {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .location-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--color-text-dark);
+        }
+
+        .highlight-item i {
+            color: var(--color-primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .location-visual {
+            background: linear-gradient(45deg, var(--color-primary-blue), #6A6A6A);
+            height: 250px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--color-footer-dark);
+            color: white;
+            padding: 2.5rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: var(--color-primary-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+            .header { padding: 1rem 0; }
+            .nav-menu { display: flex; }
+            .hero { flex-direction: row; }
+            .hero-left, .hero-right { flex: 1; padding: 4rem; }
+            .hero-left h1, .hero-left p { text-align: left; }
+            .hero-right h1, .hero-right p { text-align: right; }
+            .hero-buttons { justify-content: flex-start; }
+            .hero-right .hero-buttons { justify-content: flex-end; }
+            .section-padding { padding: 6rem 0; }
+            .content-grid { grid-template-columns: repeat(2, 1fr); }
+            .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-content { grid-template-columns: 0.8fr 1.2fr; text-align: left; }
+            .reviews-summary { text-align: left; }
+            .rating-breakdown { justify-content: flex-start; }
+            .testimonial-cards-wrapper { padding-left: 0; padding-right: 0; }
+            .testimonial-card { width: calc(50% - 0.75rem); max-width: none; }
+            .review-nav-arrows { justify-content: flex-end; }
+            .location-content { grid-template-columns: 1fr 1fr; }
+            .location-highlights { grid-template-columns: repeat(2, 1fr); }
+            .location-visual { height: 350px; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .header { padding: 1.25rem 0; }
+            .hero-left h1 { font-size: 4rem; }
+            .hero-left p { font-size: 1.3rem; }
+            .hero-right h1 { font-size: 4rem; }
+            .hero-right p { font-size: 1.3rem; }
+            .section-padding { padding: 8rem 0; }
+            .content-grid { grid-template-columns: repeat(3, 1fr); }
+            .facilities-grid { grid-template-columns: repeat(4, 1fr); }
+            .testimonial-card { width: calc(33.333% - 1rem); }
+            .location-visual { height: 400px; }
+            .footer-content { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Message Box Element -->
+    <div id="messageBox" class="fixed top-4 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg z-[9999] opacity-0 invisible transition-all duration-300"></div>
+
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <nav class="nav-container">
+            <a href="#" class="logo">🏔️ Hiewa Stays & Trails</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#tabs">Explore</a></li>
+                <li class="nav-item"><a href="#facilities">Facilities</a></li>
+                <li class="nav-item"><a href="#reviews">Reviews</a></li>
+                <li class="nav-item"><a href="#location">Location</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#book" class="book-now-btn">Book Now</a>
+        </nav>
+    </header>
+
+    <!-- Split-Screen Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1>Escape to Vanjangi Hills</h1>
+                <p>Experience the magic of 360° hill views, pristine nature trails, and unforgettable adventures at the foot of Vanjangi Hills, Andhra Pradesh</p>
+                <div class="hero-buttons">
+                    <a href="#tabs" class="btn-hero btn-hero-primary">Explore Stays</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-content">
+                <h1>Adventure Awaits</h1>
+                <p>Unleash your spirit on sunrise treks, forest walks, and discover hidden waterfalls. Your journey starts here.</p>
+                <div class="hero-buttons">
+                    <a href="#tabs" class="btn-hero btn-hero-secondary">Adventure Trails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section section-padding">
+        <div class="container">
+            <p>At Hiewa, our trails are more than just paths; they are invitations to reconnect with nature and yourself. Each day brings a new adventure, from invigorating sunrise treks that unveil breathtaking panoramic views, to serene forest walks where you can truly immerse yourself in the natural symphony. Evenings are for sharing stories around crackling campfires, reflecting on the day's discoveries. Our curated experiences are designed to blend daily exploration with moments of tranquility, ensuring every step of your journey is memorable.</p>
+        </div>
+    </section>
+
+    <!-- Tabbed Sections for Rooms and Trails -->
+    <section id="tabs" class="tabbed-sections section-padding">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-button active" data-tab="stays">Our Stays</button>
+                <button class="tab-button" data-tab="trails">Our Trails</button>
+            </div>
+
+            <!-- Stays Tab Content -->
+            <div id="stays" class="tab-content active">
+                <div class="section-title">
+                    <h2>Choose Your Perfect Stay</h2>
+                    <p>From luxury comfort to budget adventures - we have something for every traveler</p>
+                </div>
+                <div class="content-grid">
+                    <div class="card-item">
+                        <div class="card-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Deluxe Rooms</h3>
+                            <p class="card-description">Premium comfort with private balcony overlooking the majestic Vanjangi hills. Perfect for couples seeking luxury.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Private Balcony</span>
+                                <span class="feature-tag">Hill View</span>
+                                <span class="feature-tag">AC</span>
+                            </div>
+                            <div class="card-price">₹2,500/night</div>
+                            <button class="card-action-btn room-book-btn" data-room-title="Deluxe Rooms">Check Availability</button>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div class="card-image">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Amber Rooms</h3>
+                            <p class="card-description">Spacious family rooms designed for large groups. Comfortable and affordable for memorable group adventures.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Family Size</span>
+                                <span class="feature-tag">Group Friendly</span>
+                                <span class="feature-tag">Garden View</span>
+                            </div>
+                            <div class="card-price">₹1,800/night</div>
+                            <button class="card-action-btn room-book-btn" data-room-title="Amber Rooms">Check Availability</button>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div class="card-image">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Bunker Beds</h3>
+                            <p class="card-description">Budget-friendly dormitory style accommodation. Perfect for backpackers and large groups on a budget.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Budget Friendly</span>
+                                <span class="feature-tag">Shared Space</span>
+                                <span class="feature-tag">Backpacker</span>
+                            </div>
+                            <div class="card-price">₹800/night</div>
+                            <button class="card-action-btn room-book-btn" data-room-title="Bunker Beds">Check Availability</button>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div class="card-image">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Adventure Tents</h3>
+                            <p class="card-description">Unique camping experience under the stars. Feel one with nature in our comfortable outdoor tents.</p>
+                            <div class="card-features">
+                                <span class="feature-tag">Camping</span>
+                                <span class="feature-tag">Star Gazing</span>
+                                <span class="feature-tag">Adventure</span>
+                            </div>
+                            <div class="card-price">₹1,200/night</div>
+                            <button class="card-action-btn room-book-btn" data-room-title="Adventure Tents">Check Availability</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trails Tab Content -->
+            <div id="trails" class="tab-content">
+                <div class="section-title">
+                    <h2>Adventure Trails</h2>
+                    <p>Discover the hidden gems of Andhra Pradesh with our curated trail packages</p>
+                </div>
+                <div class="content-grid">
+                    <div class="card-item">
+                        <div class="card-image" style="background: linear-gradient(135deg, var(--color-accent-orange), #FFD700);">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Vizag ~ Vanjangi Discovery</h3>
+                            <p class="card-description">Scenic coastal to hill journey, Vanjangi sunrise viewpoint, local tribal culture experience, photography workshops.</p>
+                            <div class="card-duration">2 Days | 1 Night</div>
+                            <button class="card-action-btn trail-inquiry-btn" data-trail-title="Vizag ~ Vanjangi Discovery">Get Detailed Itinerary</button>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div class="card-image" style="background: linear-gradient(135deg, var(--color-accent-orange), #FFD700);">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Tarabu Waterfalls Trek</h3>
+                            <p class="card-description">Hidden waterfall expedition, nature photography session, swimming in natural pools, local guide & safety gear.</p>
+                            <div class="card-duration">1 Day | Monsoon Special</div>
+                            <button class="card-action-btn trail-inquiry-btn" data-trail-title="Tarabu Waterfalls Trek">Book Adventure</button>
+                        </div>
+                    </div>
+
+                    <div class="card-item">
+                        <div class="card-image" style="background: linear-gradient(135deg, var(--color-accent-orange), #FFD700);">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Grand Eastern Circuit</h3>
+                            <p class="card-description">Vizag → Araku → Vanjangi → Lammasingi, coffee plantation tours, tribal museum visits, Kashmir of Andhra Pradesh.</p>
+                            <div class="card-duration">4 Days | 3 Nights</div>
+                            <button class="card-action-btn trail-inquiry-btn" data-trail-title="Grand Eastern Circuit">Plan Your Journey</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Facilities</h2>
+                <p>Everything you need for a perfect mountain getaway</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3 class="facility-title">Mountain Café</h3>
+                    <p>Enjoy fresh local cuisine and aromatic coffee with panoramic hill views</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="facility-title">Chill Zone</h3>
+                    <p>Relax with board games, books, and fellow travelers in our cozy common area</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="facility-title">LoftNet Area</h3>
+                    <p>High-speed internet connectivity for digital nomads and remote workers</p>
+                </div>
+
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="facility-title">Botanical Garden</h3>
+                    <p>Explore our beautiful garden filled with native plants and peaceful walking paths</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section section-padding">
+        <div class="container">
+            <div class="reviews-content">
+                <!-- Left Column: Overall Ratings -->
+                <div class="reviews-summary">
+                    <h2>WHAT HOSTELLERS SAY</h2>
+                    <div class="star-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-lg text-gray-600">556 Reviews</span>
+                    <div class="rating-breakdown">
+                        <div class="rating-item">
+                            <div class="rating-score">4.8</div>
+                            <p class="text-gray-600 mt-2">Facilities</p>
+                        </div>
+                        <div class="rating-item">
+                            <div class="rating-score">4.7</div>
+                            <p class="text-gray-600 mt-2">Service</p>
+                        </div>
+                        <div class="rating-item">
+                            <div class="rating-score">4.8</div>
+                            <p class="text-gray-600 mt-2">Location</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Testimonial Carousel -->
+                <div class="relative overflow-hidden">
+                    <div class="testimonial-cards-wrapper" id="testimonials-carousel-v4">
+                        <!-- Testimonial Card 1 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="reviewer-name">Shubham</p>
+                                    <p class="reviewer-meta">Solo</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">Great comfortable stay, with warm and friendly vibe around. Nice view and location with upper tapovan nearby. Perfect stay for workation, food is also great in the cafe. Would recommend it any day.</p>
+                        </div>
+                        <!-- Testimonial Card 2 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="reviewer-name">Apurva</p>
+                                    <p class="reviewer-meta">Group</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">5 of us stayed in the 3 private rooms and it's the best workation ever! Dedicated work spaces, comfortable seating arrangements and how can I miss the views.</p>
+                        </div>
+                        <!-- Testimonial Card 3 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="reviewer-name">Dimple</p>
+                                    <p class="reviewer-meta">Solo</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">Had a great time! Nice place for a workation. The cafe has an amazing view! :) Awesome cafe food, helpful staff specially the cafe manager. Can't wait to book my next workation already.</p>
+                        </div>
+                    </div>
+                    <div class="review-nav-arrows">
+                        <button id="prev-review-v4"><i class="fas fa-arrow-left"></i></button>
+                        <button id="next-review-v4"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section section-padding">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-text">
+                    <h2>360° Hill Paradise</h2>
+                    <p>Nestled at the foot of the magnificent Vanjangi Hills, Hiewa Stays & Trails offers an unparalleled natural experience. Wake up to breathtaking sunrise views, explore pristine hiking trails, and immerse yourself in the tranquil beauty of Andhra Pradesh's hidden gem.</p>
+                    <p>Our location provides the perfect base for exploring the Eastern Ghats, with easy access to waterfalls, viewpoints, and cultural experiences that showcase the rich heritage of this remarkable region.</p>
+                    <div class="location-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-mountain"></i>
+                            <span>360° Hill Views</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-hiking"></i>
+                            <span>Multiple Trekking Trails</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-sun"></i>
+                            <span>Spectacular Sunrises</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>Pristine Nature</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-visual">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hiewa Stays & Trails</h3>
+                    <p>Your gateway to the magnificent Vanjangi Hills. Experience nature, adventure, and tranquility like never before.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#rooms">Room Types</a></li>
+                        <li><a href="#trails">Adventure Trails</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#location">Location</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Trail Packages</h3>
+                    <ul>
+                        <li><a href="#">Vizag ~ Vanjangi</a></li>
+                        <li><a href="#">Tarabu Waterfalls</a></li>
+                        <li><a href="#">Eastern Circuit</a></li>
+                        <li><a href="#">Custom Packages</a></li>
+                        <li><a href="#">Group Bookings</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Vanjangi Hills, Andhra Pradesh</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXXX XXXXX</p>
+                    <p><i class="fas fa-envelope"></i> info@hiewastays.com</p>
+                    <p><i class="fas fa-clock"></i> 24/7 Customer Support</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hiewa Stays & Trails. All rights reserved. | Designed for Adventure Seekers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to display messages (replaces alert())
+        function showMessage(message) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.classList.add('show');
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000); // Message disappears after 3 seconds
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a[href^="#"], .hero-buttons a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 1px 10px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Interactive room booking buttons
+        document.querySelectorAll('.room-book-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const roomTitle = this.parentElement.querySelector('.card-title').textContent;
+                showMessage(`Booking inquiry for ${roomTitle}. This will redirect to Odoo booking system.`);
+            });
+        });
+
+        // Trail inquiry buttons
+        document.querySelectorAll('.trail-inquiry-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const trailTitle = this.parentElement.querySelector('.card-title').textContent;
+                showMessage(`Inquiry for ${trailTitle}. This will open a detailed form for trail booking.`);
+            });
+        });
+
+        // Dynamic year in footer
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.footer-bottom p').innerHTML = 
+            `&copy; ${currentYear} Hiewa Stays & Trails. All rights reserved. | Designed for Adventure Seekers`;
+
+        // Tabbed content logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tabs-nav .tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Deactivate all buttons and content
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Activate clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).classList.add('active');
+                });
+            });
+        });
+
+        // Testimonials Carousel Logic
+        const carouselV4 = document.getElementById('testimonials-carousel-v4');
+        const prevBtnV4 = document.getElementById('prev-review-v4');
+        const nextBtnV4 = document.getElementById('next-review-v4');
+
+        if (carouselV4 && prevBtnV4 && nextBtnV4) {
+            let scrollAmountV4 = 0;
+            const getCardWidthV4 = () => {
+                const card = carouselV4.querySelector('.testimonial-card');
+                return card ? card.offsetWidth + 24 : 324; // Default if card not found (300px + 24px gap)
+            };
+
+            nextBtnV4.addEventListener('click', () => {
+                scrollAmountV4 += getCardWidthV4();
+                carouselV4.scrollTo({
+                    left: scrollAmountV4,
+                    behavior: 'smooth'
+                });
+            });
+
+            prevBtnV4.addEventListener('click', () => {
+                scrollAmountV4 -= getCardWidthV4();
+                carouselV4.scrollTo({
+                    left: scrollAmountV4,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
