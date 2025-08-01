@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiewa Stays & Trails - Vanjangi Hills Adventure (Split Tabs)</title>
+    <title>Hiewa Stays & Trails - Vanjangi Hills Adventure</title>
     <!-- Google Fonts: Poppins for modern feel, Inter for body -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -21,7 +21,7 @@
             --color-footer-dark: #222222; /* Dark gray footer */
             --color-accent-orange: #FF8C00; /* Orange for trails */
             --color-accent-yellow: #FFD700; /* Gold for reviews */
-            --color-review-bg-light: #FFFACD; /* Lemon Chiffon for review cards background */
+            --color-review-bg-light: #E0E7FF; /* Light blue for review cards background */
             --color-effort-easy: #4CAF50; /* Green */
             --color-effort-moderate: #FFC107; /* Amber */
             --color-effort-intense: #DC3545; /* Red */
@@ -431,7 +431,7 @@
         }
 
         .star-rating {
-            color: var(--color-accent-yellow);
+            color: var(--color-primary-blue);
             font-size: 1.6rem;
             margin-bottom: 0.5rem;
         }
@@ -452,7 +452,7 @@
             width: 70px;
             height: 70px;
             background-color: var(--color-review-bg-light);
-            border: 2px solid var(--color-accent-yellow);
+            border: 2px solid var(--color-primary-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -509,12 +509,12 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background-color: var(--color-accent-yellow);
+            background-color: var(--color-primary-blue);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: var(--color-text-dark);
+            color: white;
             margin-right: 0.8rem;
         }
 
@@ -695,8 +695,10 @@
             .nav-menu { display: flex; }
             .hero { flex-direction: row; }
             .hero-left, .hero-right { flex: 1; padding: 4rem; }
-            .hero-left h1, .hero-left p { text-align: left; }
-            .hero-right h1, .hero-right p { text-align: right; }
+            .hero-left h1 { font-size: 3.5rem; }
+            .hero-left p { font-size: 1.2rem; }
+            .hero-right h1 { font-size: 3.5rem; }
+            .hero-right p { font-size: 1.2rem; }
             .hero-buttons { justify-content: flex-start; }
             .hero-right .hero-buttons { justify-content: flex-end; }
             .section-padding { padding: 6rem 0; }
@@ -736,14 +738,13 @@
     <!-- Header -->
     <header class="header" id="mainHeader">
         <nav class="nav-container">
-            <a href="#" class="logo">🏔️ Hiewa Stays & Trails</a>
+            <a href="Home.html" class="logo">🏔️ Hiewa Stays & Trails</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#home">Home</a></li>
-                <li class="nav-item"><a href="#tabs">Explore</a></li>
-                <li class="nav-item"><a href="#facilities">Facilities</a></li>
-                <li class="nav-item"><a href="#reviews">Reviews</a></li>
-                <li class="nav-item"><a href="#location">Location</a></li>
-                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <li class="nav-item"><a href="Home.html">Home</a></li>
+                <li class="nav-item"><a href="Home.html#tabs">Stays</a></li>
+                <li class="nav-item"><a href="Trails.html">Trails</a></li>
+                <li class="nav-item"><a href="Blogpage.html">Blog</a></li>
+                <li class="nav-item"><a href="Contactus.html">Contact Us</a></li>
             </ul>
             <a href="#book" class="book-now-btn">Book Now</a>
         </nav>
@@ -756,7 +757,7 @@
                 <h1>Escape to Vanjangi Hills</h1>
                 <p>Experience the magic of 360° hill views, pristine nature trails, and unforgettable adventures at the foot of Vanjangi Hills, Andhra Pradesh</p>
                 <div class="hero-buttons">
-                    <a href="#tabs" class="btn-hero btn-hero-primary">Explore Stays</a>
+                    <a href="Home.html#tabs" class="btn-hero btn-hero-primary">Explore Stays</a>
                 </div>
             </div>
         </div>
@@ -765,7 +766,7 @@
                 <h1>Adventure Awaits</h1>
                 <p>Unleash your spirit on sunrise treks, forest walks, and discover hidden waterfalls. Your journey starts here.</p>
                 <div class="hero-buttons">
-                    <a href="#tabs" class="btn-hero btn-hero-secondary">Adventure Trails</a>
+                    <a href="Trails.html" class="btn-hero btn-hero-secondary">Adventure Trails</a>
                 </div>
             </div>
         </div>
@@ -783,7 +784,7 @@
         <div class="container">
             <div class="tabs-nav">
                 <button class="tab-button active" data-tab="stays">Our Stays</button>
-                <button class="tab-button" data-tab="trails">Our Trails</button>
+                <button class="tab-button" data-tab="trails-tab-content">Our Trails</button>
             </div>
 
             <!-- Stays Tab Content -->
@@ -864,7 +865,7 @@
             </div>
 
             <!-- Trails Tab Content -->
-            <div id="trails" class="tab-content">
+            <div id="trails-tab-content" class="tab-content">
                 <div class="section-title">
                     <h2>Adventure Trails</h2>
                     <p>Discover the hidden gems of Andhra Pradesh with our curated trail packages</p>
@@ -1084,22 +1085,22 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#rooms">Room Types</a></li>
-                        <li><a href="#trails">Adventure Trails</a></li>
-                        <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#location">Location</a></li>
+                        <li><a href="Home.html#stays">Room Types</a></li>
+                        <li><a href="Trails.html">Adventure Trails</a></li>
+                        <li><a href="Home.html#facilities">Facilities</a></li>
+                        <li><a href="Home.html#reviews">Reviews</a></li>
+                        <li><a href="Home.html#location">Location</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Trail Packages</h3>
                     <ul>
-                        <li><a href="#">Vizag ~ Vanjangi</a></li>
-                        <li><a href="#">Tarabu Waterfalls</a></li>
-                        <li><a href="#">Eastern Circuit</a></li>
-                        <li><a href="#">Custom Packages</a></li>
-                        <li><a href="#">Group Bookings</a></li>
+                        <li><a href="Trails.html">Vizag ~ Vanjangi</a></li>
+                        <li><a href="Trails.html">Tarabu Waterfalls</a></li>
+                        <li><a href="Trails.html">Eastern Circuit</a></li>
+                        <li><a href="Trails.html">Custom Packages</a></li>
+                        <li><a href="Trails.html">Group Bookings</a></li>
                     </ul>
                 </div>
                 
@@ -1132,14 +1133,17 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-menu a[href^="#"], .hero-buttons a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // Only prevent default and scroll if it's an internal anchor on the same page
+                if (this.pathname === window.location.pathname) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
